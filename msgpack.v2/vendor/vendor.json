@@ -1,0 +1,19 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "GlcFcOvNPUSwoyGQuMyMTYGM89Y=",
+			"path": "github.com/liangdas/mqant/utils/msgpack.v2",
+			"revision": "e83767bfa69d544ae23ad774a848c77029498fef",
+			"revisionTime": "2018-01-04T11:51:43Z"
+		},
+		{
+			"checksumSHA1": "Pug9F6mO5s8qmPXZmZnqJkN55E0=",
+			"path": "github.com/liangdas/mqant/utils/msgpack.v2/codes",
+			"revision": "e83767bfa69d544ae23ad774a848c77029498fef",
+			"revisionTime": "2018-01-04T11:51:43Z"
+		}
+	],
+	"rootPath": "toolbox/msgpack.v2"
+}
