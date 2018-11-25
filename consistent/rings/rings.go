@@ -27,6 +27,14 @@ func (this *ConsistentHashNodeRing) SetNodes(nodes []string) {
 	}
 }
 
+func (this *ConsistentHashNodeRing) RemoveNode(nodes []string){
+	for _,node := range nodes{
+		this.ring.Remove(node)
+	}
+
+}
+
 func (this *ConsistentHashNodeRing) SetNumberOfReplicas(num int32) {
 	this.ring.NumberOfReplicas = int(num)
 }
+

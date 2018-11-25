@@ -1,12 +1,12 @@
 package slice
 
-func Contains(sl []interface{}, v interface{}) bool {
-	for _, vv := range sl {
+func Contains(sl []interface{}, v interface{}) (int, bool) {
+	for index, vv := range sl {
 		if vv == v {
-			return true
+			return index, true
 		}
 	}
-	return false
+	return 0,false
 }
 
 func ContainsInt(sl []int, v int) bool {
@@ -27,11 +27,11 @@ func ContainsInt64(sl []int64, v int64) bool {
 	return false
 }
 
-func ContainsString(sl []string, v string) bool {
-	for _, vv := range sl {
+func ContainsString(sl []string, v string) (int,bool) {
+	for index, vv := range sl {
 		if vv == v {
-			return true
+			return index,true
 		}
 	}
-	return false
+	return 0,false
 }

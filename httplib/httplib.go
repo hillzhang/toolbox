@@ -406,9 +406,13 @@ func (b *BeegoHTTPRequest) DoRequest() (resp *http.Response, err error) {
 		var buf bytes.Buffer
 		for k, v := range b.params {
 			for _, vv := range v {
-				buf.WriteString(url.QueryEscape(k))
+				//buf.WriteString(url.QueryEscape(k))
+				//buf.WriteByte('=')
+				//buf.WriteString(url.QueryEscape(vv))
+				//buf.WriteByte('&')
+				buf.WriteString(k)
 				buf.WriteByte('=')
-				buf.WriteString(url.QueryEscape(vv))
+				buf.WriteString(vv)
 				buf.WriteByte('&')
 			}
 		}

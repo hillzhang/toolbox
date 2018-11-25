@@ -92,3 +92,9 @@ func (this *SafeMap) IsEmpty() bool {
 	this.RUnlock()
 	return empty
 }
+
+func (this *SafeMap) Reset(){
+	this.Lock()
+	this.M = make(map[string]interface{})
+	this.Unlock()
+}
