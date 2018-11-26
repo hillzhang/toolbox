@@ -6,7 +6,6 @@
       <change beforePath="$PROJECT_DIR$/govalidator" afterPath="$PROJECT_DIR$/govalidator" />
       <change beforePath="$PROJECT_DIR$/logrus" afterPath="$PROJECT_DIR$/logrus" />
       <change beforePath="$PROJECT_DIR$/now" afterPath="$PROJECT_DIR$/now" />
-      <change beforePath="$PROJECT_DIR$/utils/flag.go" afterPath="$PROJECT_DIR$/utils/flag.go" />
       <change beforePath="$PROJECT_DIR$/viper" afterPath="$PROJECT_DIR$/viper" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
