@@ -4,6 +4,7 @@ import (
 	"reflect"
 	"unsafe"
 	"flag"
+	"strings"
 )
 //传入格式
 //usage 对应flag 参数中的usage，
@@ -37,25 +38,37 @@ func GenFlag(config interface{},parsed bool)  {
 	}
 
 	for i := 0; i< typeOfConfig.NumField();i++{
+
 		tag := typeOfConfig.Field(i).Tag
+		var name,usage string
+
+		name,ok := tag.Lookup(NAME)
+		if !ok {
+			name = strings.ToLower(typeOfConfig.Field(i).Name)
+		}
+		usage,ok = tag.Lookup(USAGE)
+		if !ok{
+			usage = strings.ToLower(typeOfConfig.Field(i).Name)
+		}
+		
 		unPointer := unsafe.Pointer(valueOfConfig.Field(i).Addr().Pointer())
 		value := valueOfConfig.Field(i)
 
 		switch typeOfConfig.Field(i).Type.Kind(){
 		case reflect.String:
-			flag.StringVar((*string)(unPointer),tag.Get(NAME),value.String(),tag.Get(USAGE))
+			flag.StringVar((*string)(unPointer),name,value.String(),usage)
 		case reflect.Int:
-			flag.IntVar((*int)(unPointer),tag.Get(NAME),int(value.Int()),tag.Get(USAGE))
+			flag.IntVar((*int)(unPointer),name,int(value.Int()),usage)
 		case reflect.Int64:
-			flag.Int64Var((*int64)(unPointer),tag.Get(NAME),value.Int(),tag.Get(USAGE))
+			flag.Int64Var((*int64)(unPointer),name,value.Int(),usage)
 		case reflect.Bool:
-			flag.BoolVar((*bool)(unPointer),tag.Get(NAME),value.Bool(),tag.Get(USAGE))
+			flag.BoolVar((*bool)(unPointer),name,value.Bool(),usage)
 		case reflect.Float64:
-			flag.Float64Var((*float64)(unPointer),tag.Get(NAME),value.Float(),tag.Get(USAGE))
+			flag.Float64Var((*float64)(unPointer),name,value.Float(),usage)
 		case reflect.Uint:
-			flag.UintVar((*uint)(unPointer),tag.Get(NAME),uint(value.Uint()),tag.Get(USAGE))
+			flag.UintVar((*uint)(unPointer),name,uint(value.Uint()),usage)
 		case reflect.Uint64:
-			flag.Uint64Var((*uint64)(unPointer),tag.Get(NAME),value.Uint(),tag.Get(USAGE))
+			flag.Uint64Var((*uint64)(unPointer),name,value.Uint(),usage)
 		}
 	}
 	if parsed{
